@@ -2,9 +2,14 @@ from django.views.generic import TemplateView
 
 
 class HomePage(TemplateView):
-    template_name = 'index.html'
+    template_name = "index.html"
 
-class TestPageView(TemlateView):
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated():
+            return HttpResponseRedirect(reverse("test"))
+        return super().get(request, *args, **kwargs)
+
+class TestPageView(TemplateView):
     template_name = 'test.html'
 
 class ThanksView(TemplateView):
