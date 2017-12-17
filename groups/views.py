@@ -6,7 +6,7 @@ from groups. models import Group, GroupMember
 
 
 
-class CreateGroups(LoginRequiredMixin, generic.CreateView):
+class CreateGroup(LoginRequiredMixin, generic.CreateView):
     fields = ('name', 'description' )
     model = Group
 
