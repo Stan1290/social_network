@@ -1,8 +1,8 @@
 from django.contrib import admin
-from . import models
+from groups import models
 
 
 class GroupMemberInLine(admin.TabularInline):
     model = models.GroupMember
 
-admin.site.register(Group)
+admin.site.register(models.Group)

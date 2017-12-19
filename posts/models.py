@@ -2,7 +2,7 @@ from django.db import models
 from django.core.urlresolvers import reverse
 from django.contrib.auth import get_user_model
 import misaka
-from goups.models import Group
+from groups.models import Group
 from django.conf import settings
 
 
@@ -13,7 +13,7 @@ class Post(models.Model):
     user = models.ForeignKey(User, related_name='post')
     created_at = models.DateTimeField(auto_now=True)
     message = models.TextField()
-    message_html = medels.TextField(editable=False)
+    message_html = models.TextField(editable=False)
     group = models.ForeignKey(Group, related_name='post', null=True, blank=True)
 
 
