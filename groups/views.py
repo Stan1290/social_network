@@ -20,7 +20,7 @@ class ListGroups(generic.ListView):
     model = Group
 
 
-class JionGroup(LoginRequiredMixin, generic.RedirectView):
+class JoinGroup(LoginRequiredMixin, generic.RedirectView):
 
 
     def get_redirect_url(self, *args, **kwargs):

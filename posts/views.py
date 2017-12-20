@@ -14,7 +14,12 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
-class UserPost(generic.ListView):
+class PostList(SelectRelatedMixin, generic.ListView):
+    model = models.Post
+    select_related = ('user', 'group')
+
+
+class UserPosts(generic.ListView):
     model = models.Post
     template_name = 'post/user_post_list.html'
 
@@ -32,7 +37,7 @@ class UserPost(generic.ListView):
         return context
 
 
-class PostDetail(SelectRealatedMixin, generic.DetailView):
+class PostDetail(SelectRelatedMixin, generic.DetailView):
     model = models.Post
     select_related = ('user', 'group')
 
@@ -41,12 +46,12 @@ class PostDetail(SelectRealatedMixin, generic.DetailView):
         return queryset.filter(user__username__iexact=self.kwargs.get('username'))
 
 
-class CreatePost(LoginRequiredMixin, SelectRealtedMixin, generic.CreateView):
+class CreatePost(LoginRequiredMixin, SelectRelatedMixin, generic.CreateView):
     model = models.Post
     fields = ('message', 'group')
 
     def form_valid(self, form):
-        self.object = from.save(commit=False)
+        self.object = form.save(commit=False)
         self.object.user = self.request.user
         self.object.save()
         return super().form_valid(form)
