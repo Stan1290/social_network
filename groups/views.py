@@ -27,7 +27,7 @@ class JoinGroup(LoginRequiredMixin, generic.RedirectView):
 
 
     def get_redirect_url(self, *args, **kwargs):
-        return reverse('groups:single', kwargs={'slug':self.get('slug')} )
+        return reverse('groups:single', kwargs={'slug':self.kwargs.get('slug')} )
 
 
     def get(self, request, *args, **kwargs):
@@ -45,14 +45,14 @@ class JoinGroup(LoginRequiredMixin, generic.RedirectView):
 class LeaveGroup(LoginRequiredMixin, generic.RedirectView ):
 
     def get_redirect_url(self, *args, **kwargs):
-        return reverse('groups:single', kwargs={'slug':self.get('slug')} )
+        return reverse('groups:single', kwargs={'slug':self.kwargs.get('slug')} )
 
     def get(self, request, *args, **kwargs):
 
         try:
             membership = models.GroupMember.objects.filter(
                 user=self.request.user,
-                group__slug=slef.kwagrs.get('slug')
+                group__slug=self.kwargs.get('slug')
             ).get()
         except models.GroupMember.DoesNotExist:
             messages.warning(self.request, 'Sorry, you are not a member of this group!' )
