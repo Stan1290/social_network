@@ -3,8 +3,11 @@ from django.contrib.auth.mixins import (LoginRequiredMixin, PermissionRequiredMi
 from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.views import generic
-from groups. models import Group, GroupMember
+from groups.models import Group, GroupMember
 from django.shortcuts import get_object_or_404
+from . import models
+from django.db import IntegrityError
+
 
 
 
@@ -36,7 +39,7 @@ class JoinGroup(LoginRequiredMixin, generic.RedirectView):
         else:
             messages.success(self.request, "You're now a member!")
 
-        return super().get(requset, *args, **kwargs)
+        return super().get(request, *args, **kwargs)
 
 
 class LeaveGroup(LoginRequiredMixin, generic.RedirectView ):
