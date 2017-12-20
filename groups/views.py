@@ -12,7 +12,7 @@ class CreateGroup(LoginRequiredMixin, generic.CreateView):
     fields = ('name', 'description' )
     model = Group
 
-# Create your views here.
+
 class SingleGroup(generic.DetailView):
     model = Group
 
