@@ -1,5 +1,9 @@
 {% extends 'posts/post_base.html' %}
 
+{% block title_block %}
+Details for post {{post.id}}
+{% endblock title_block %}
+
 {% block post_content %}
     <div class="clo-md-8">
         {% include 'posts/_post.html' %}

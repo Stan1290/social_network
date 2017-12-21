@@ -1,4 +1,7 @@
 {% extends 'posts/post_base.html' %}
+{% block title_block %}
+Posts by {{post_user.username}}
+{% endblock title_block %}
 
 {% block prepost %}
     <div class="col-md-4">
