@@ -23,9 +23,14 @@ All Groups
 
 {% endblock pregroup %}
 
+<div class="container-fluid">
+
 
 {% block group_content %}
 <div class="col-md-8">
+    <div class="container-fluid">
+
+
     <div class="list-group">
         {% for group in object_list %}
         <div class='panel panel-default'>
@@ -59,6 +64,7 @@ All Groups
         {% endfor %}
 
     </div>
-
+    </div>
 </div>
 {% endblock group_content %}
+</div>
