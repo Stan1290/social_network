@@ -1,6 +1,24 @@
 body {
   margin: 0;
-  overflow: hidden;
-  background-color: #8e6354;
-  color:white;
+  overflow: scroll;
+  background-color: #e1e8f4;
+  color:black;
+}
+
+.navbar-brand{
+    font-family: 'Old Standard TT', serif;
+}
+
+.navbar-link{
+    font-family: 'Cinzel', serif;
+}
+
+.post-message{
+    font-family: 'Satisfy', cursive;
+    background-color: #e8e8e8;
+    margin: 5px;
+    border-radius: 5px;
+    padding: 10px;
+    border-color: black;
+    border-width: 3px;
 }
